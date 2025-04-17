@@ -1,0 +1,25 @@
+import random
+import time
+
+def simulate_match(team1, team2):
+    print(f"{team1} vs {team2} - Match is starting!")
+    time.sleep(1)
+
+    score1 = random.randint(0, 5)
+    score2 = random.randint(0, 5)
+
+    print(f"Final Score: {team1} {score1} - {score2} {team2}")
+
+    if score1 > score2:
+        print(f"{team1} wins!")
+    elif score2 > score1:
+        print(f"{team2} wins!")
+    else:
+        print("It's a draw!")
+
+# Example usage
+team_a = input("Enter Team A name: ")
+team_b = input("Enter Team B name: ")
+
+simulate_match(team_a, team_b)
+
