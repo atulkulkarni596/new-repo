@@ -1,0 +1,43 @@
+import random
+import time
+
+def play_ball():
+    outcomes = ['0', '1', '2', '3', '4', '6', 'W']  # W = wicket
+    return random.choice(outcomes)
+
+def simulate_innings(team_name, balls=30):  # 5 overs = 30 balls
+    print(f"\n{team_name} is batting...\n")
+    score = 0
+    wickets = 0
+    for ball in range(1, balls + 1):
+        result = play_ball()
+        if result == 'W':
+            wickets += 1
+            print(f"Ball {ball}: WICKET! Total: {score}/{wickets}")
+            if wickets == 10:
+                print(f"{team_name} all out!")
+                break
+        else:
+            score += int(result)
+            print(f"Ball {ball}: {result} runs. Total: {score}/{wickets}")
+        time.sleep(0.3)  # Just for realism
+    return score
+
+# Match simulation
+team1 = input("Enter Team 1 Name: ")
+team2 = input("Enter Team 2 Name: ")
+
+team1_score = simulate_innings(team1)
+team2_score = simulate_innings(team2)
+
+print("\n--- MATCH RESULT ---")
+print(f"{team1}: {team1_score} runs")
+print(f"{team2}: {team2_score} runs")
+
+if team1_score > team2_score:
+    print(f"{team1} wins by {team1_score - team2_score} runs!")
+elif team2_score > team1_score:
+    print(f"{team2} wins by {10 - (team2_score - team1_score)} wickets!")
+else:
+    print("It's a tie!")
+
