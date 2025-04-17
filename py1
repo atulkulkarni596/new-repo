@@ -1,0 +1,5 @@
+number = float(input("Enter a number: "))
+print(f"The number plus 10 is: {number + 10}")
+
+
+
